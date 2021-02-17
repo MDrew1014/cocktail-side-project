@@ -1,13 +1,13 @@
 package com.mycocktailproject.models;
 
 public class CocktailDBWrapper {
-	private Cocktail[] drinks;
+	private CocktailDBCocktail[] drinks;
 
-	public Cocktail[] getDrinks() {
+	public CocktailDBCocktail[] getDrinks() {
 		return drinks;
 	}
 
-	public void setDrinks(Cocktail[] drinks) {
+	public void setDrinks(CocktailDBCocktail[] drinks) {
 		this.drinks = drinks;
 	}
 	

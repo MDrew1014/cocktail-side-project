@@ -1,84 +1,66 @@
 package com.mycocktailproject.models;
 
+import java.util.List;
+
 public class Cocktail {
 	
-	private long idDrink;
-	private String strDrink;
-	private String strAlcoholic;
-	private String strGlass;
-	private String strInstructions;
-	private String strCategory;
+	private long id;
+	private String name;
+	private boolean isAlcoholic;
+	private String instructions;
+	private String glass;
+	private List<String> ingredients;
 	
-	public Cocktail() {
-		
-	}
-	
-	public Cocktail(long idDrink, String strDrink, String strAlcoholic, String strGlass, String strInstructions,
-			String strCategory) {
-		this.idDrink = idDrink;
-		this.strDrink = strDrink;
-		this.strAlcoholic = strAlcoholic;
-		this.strGlass = strGlass;
-		this.strInstructions = strInstructions;
-		this.strCategory = strCategory;
-	}
-
-
-	public long getIdDrink() {
-		return idDrink;
-	}
-
-
-	public String getStrDrink() {
-		return strDrink;
-	}
-
-
-	public void setStrDrink(String strDrink) {
-		this.strDrink = strDrink;
-	}
-
-
-	public String getStrAlcoholic() {
-		return strAlcoholic;
-	}
-
-
-	public void setStrAlcoholic(String strAlcoholic) {
-		this.strAlcoholic = strAlcoholic;
-	}
-
-
-	public String getStrGlass() {
-		return strGlass;
-	}
-
-
-	public void setStrGlass(String strGlass) {
-		this.strGlass = strGlass;
-	}
-
-
-	public String getStrInstructions() {
-		return strInstructions;
-	}
-
-
-	public void setStrInstructions(String strInstructions) {
-		this.strInstructions = strInstructions;
-	}
-
-
-	public String getStrCategory() {
-		return strCategory;
-	}
-
-
-	public void setStrCategory(String strCategory) {
-		this.strCategory = strCategory;
-	}
+	public Cocktail() {}
 	
 	
+	public Cocktail(long id, String name, boolean isAlcoholic, String instructions, String glass,
+			List<String> ingredients) {
+		this.id = id;
+		this.name = name;
+		this.isAlcoholic = isAlcoholic;
+		this.instructions = instructions;
+		this.glass = glass;
+		this.ingredients = ingredients;
+	}
+
+
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public boolean isAlcoholic() {
+		return isAlcoholic;
+	}
+	public void setAlcoholic(boolean isAlcoholic) {
+		this.isAlcoholic = isAlcoholic;
+	}
+	public String getInstructions() {
+		return instructions;
+	}
+	public void setInstructions(String instructions) {
+		this.instructions = instructions;
+	}
+	public String getGlass() {
+		return glass;
+	}
+	public void setGlass(String glass) {
+		this.glass = glass;
+	}
+	public List<String> getIngredients() {
+		return ingredients;
+	}
+	public void setIngredients(List<String> ingredients) {
+		this.ingredients = ingredients;
+	}
 	
 
 }

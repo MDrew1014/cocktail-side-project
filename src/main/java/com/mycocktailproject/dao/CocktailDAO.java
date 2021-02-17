@@ -2,13 +2,13 @@ package com.mycocktailproject.dao;
 
 import java.util.List;
 
-import com.mycocktailproject.models.Cocktail;
+import com.mycocktailproject.models.CocktailDBCocktail;
 
 
 
 public interface CocktailDAO {
 	
-	List<Cocktail> getAll();
-	Cocktail getById(long id);
+	List<CocktailDBCocktail> getAll();
+	CocktailDBCocktail getById(long id);
 
 }

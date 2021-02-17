@@ -13,7 +13,7 @@ import java.util.Map;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.client.RestTemplate;
 
-import com.mycocktailproject.models.Cocktail;
+import com.mycocktailproject.models.CocktailDBCocktail;
 import com.mycocktailproject.models.CocktailDBWrapper;
 @Component
 public class CocktailDBApiService {
@@ -23,10 +23,10 @@ public class CocktailDBApiService {
 	
 
 	
-	public Cocktail getCocktailById(long id) {
+	public CocktailDBCocktail getCocktailById(long id) {
 		String queryUrl = BASE_URL + "/lookup.php?i={i}";
 		Map<String, String> params = new HashMap<>();
-		params.put("i", ""+ id);
+		params.put("i", ""+ id); 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(List.of(MediaType.APPLICATION_JSON));
 		HttpEntity input = new HttpEntity<>(headers);
