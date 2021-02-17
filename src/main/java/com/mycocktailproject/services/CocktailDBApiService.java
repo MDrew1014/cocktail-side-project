@@ -1,9 +1,13 @@
 package com.mycocktailproject.services;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpEntity;
@@ -20,11 +24,14 @@ public class CocktailDBApiService {
 
 	
 	public Cocktail getCocktailById(long id) {
-		String queryUrl = BASE_URL + "/lookup.php";
+		String queryUrl = BASE_URL + "/lookup.php?i={i}";
 		Map<String, String> params = new HashMap<>();
 		params.put("i", ""+ id);
-		 HttpEntity<CocktailDBWrapper> resultEntity = restTemplate.getForEntity(queryUrl, CocktailDBWrapper.class, params);
-		CocktailDBWrapper result = restTemplate.getForObject(queryUrl, CocktailDBWrapper.class, params);
+		HttpHeaders headers = new HttpHeaders();
+		headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+		HttpEntity input = new HttpEntity<>(headers);
+		HttpEntity<CocktailDBWrapper> resultEntity = restTemplate.exchange(queryUrl, HttpMethod.GET, input, CocktailDBWrapper.class, params);
+		CocktailDBWrapper result = resultEntity.getBody();
 		if(result != null && result.getDrinks() != null && result.getDrinks().length ==1) {
 			return result.getDrinks()[0];
 		} else {

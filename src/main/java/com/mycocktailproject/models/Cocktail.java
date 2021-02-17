@@ -9,6 +9,9 @@ public class Cocktail {
 	private String strInstructions;
 	private String strCategory;
 	
+	public Cocktail() {
+		
+	}
 	
 	public Cocktail(long idDrink, String strDrink, String strAlcoholic, String strGlass, String strInstructions,
 			String strCategory) {
