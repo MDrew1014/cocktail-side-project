@@ -12,7 +12,6 @@ import com.mycocktailproject.models.Cocktail;
 import com.mycocktailproject.services.CocktailDBApiService;
 
 
-
 @RequestMapping("/cocktail")
 @RestController
 public class CocktailController {

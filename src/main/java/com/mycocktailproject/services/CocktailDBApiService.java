@@ -29,11 +29,9 @@ public class CocktailDBApiService {
 		params.put("i", ""+ id);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(List.of(MediaType.APPLICATION_JSON));
-		HttpEntity input = new HttpEntity<>(headers);		
-//		 HttpEntity<CocktailDBWrapper> resultEntity = restTemplate.exchange(queryUrl,HttpMethod.GET,input, CocktailDBWrapper.class, params);
-//		CocktailDBWrapper result = resultEntity.getBody();
-		 HttpEntity<String> resultEntity = restTemplate.exchange(queryUrl,HttpMethod.GET,input, String.class, params);
-			CocktailDBWrapper result = null;
+		HttpEntity input = new HttpEntity<>(headers);
+		HttpEntity<CocktailDBWrapper> resultEntity = restTemplate.exchange(queryUrl, HttpMethod.GET, input, CocktailDBWrapper.class, params);
+		CocktailDBWrapper result = resultEntity.getBody();
 		if(result != null && result.getDrinks() != null && result.getDrinks().length ==1) {
 			return result.getDrinks()[0];
 		} else {
