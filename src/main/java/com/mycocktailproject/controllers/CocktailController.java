@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mycocktailproject.dao.CocktailDAO;
+import com.mycocktailproject.models.Cocktail;
 import com.mycocktailproject.models.CocktailDBCocktail;
+import com.mycocktailproject.models.CocktailIngredient;
+import com.mycocktailproject.models.CocktailPreview;
 import com.mycocktailproject.services.CocktailDBApiService;
 
 
@@ -26,9 +29,23 @@ private CocktailDBApiService api;
 	//TODO READ ALL
 	
 	@RequestMapping(path = "/{id}", method = RequestMethod.GET)
-	public CocktailDBCocktail getById(@PathVariable("id") long idDrink) {
-		//return dao.getById(idDrink);
-		System.out.println("FUBAR");
-		return api.getCocktailById(idDrink);
+	public Cocktail getById(@PathVariable("id") long idDrink) {
+		return api.getCocktailById(idDrink).convertToCocktail();
 	}
+	//Get by name
+	@RequestMapping(path="/byName/{name}", method = RequestMethod.GET)
+	public Cocktail[] getByName(@PathVariable("name")String strDrink) {
+		CocktailDBCocktail[] apiResult = api.getCocktailByName(strDrink);
+		Cocktail[] array = new Cocktail[apiResult.length];
+		for(int i =0; i<array.length; i++) {
+			array[i] = apiResult[i].convertToCocktail();
+		}return array;
+	}
+	@RequestMapping(path="/byIngredient/{ingredient}", method = RequestMethod.GET)
+	public CocktailPreview[] getByIngredientName(@PathVariable("ingredient")String ingredient) {
+		return api.getCocktailPreviewByIngredient(ingredient);
+	}
+	
+	
+	//get by ingredient
 }
