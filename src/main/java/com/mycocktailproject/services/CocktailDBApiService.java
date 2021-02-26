@@ -15,8 +15,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.mycocktailproject.models.CocktailDBCocktail;
 import com.mycocktailproject.models.CocktailDBWrapper;
-import com.mycocktailproject.models.CocktailIngredient;
-import com.mycocktailproject.models.CocktailIngredientWrapper;
 import com.mycocktailproject.models.CocktailPreview;
 @Component
 public class CocktailDBApiService {

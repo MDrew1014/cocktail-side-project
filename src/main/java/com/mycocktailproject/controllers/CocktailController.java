@@ -1,6 +1,5 @@
 package com.mycocktailproject.controllers;
 
-import java.util.List;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mycocktailproject.dao.CocktailDAO;
 import com.mycocktailproject.models.Cocktail;
 import com.mycocktailproject.models.CocktailDBCocktail;
-import com.mycocktailproject.models.CocktailIngredient;
 import com.mycocktailproject.models.CocktailPreview;
 import com.mycocktailproject.services.CocktailDBApiService;
 
