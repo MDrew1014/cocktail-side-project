@@ -1,6 +1,7 @@
 package com.mycocktailproject.controllers;
 
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,7 +13,7 @@ import com.mycocktailproject.models.CocktailDBCocktail;
 import com.mycocktailproject.models.CocktailPreview;
 import com.mycocktailproject.services.CocktailDBApiService;
 
-
+@CrossOrigin()
 @RequestMapping("/cocktail")
 @RestController
 public class CocktailController {
@@ -39,6 +40,8 @@ private CocktailDBApiService api;
 			array[i] = apiResult[i].convertToCocktail();
 		}return array;
 	}
+	
+	
 	@RequestMapping(path="/byIngredient/{ingredient}", method = RequestMethod.GET)
 	public CocktailPreview[] getByIngredientName(@PathVariable("ingredient")String ingredient) {
 		return api.getCocktailPreviewByIngredient(ingredient);

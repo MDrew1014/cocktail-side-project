@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
@@ -17,13 +18,16 @@ import org.springframework.web.client.RestTemplate;
 import com.mycocktailproject.models.CocktailDBCocktail;
 import com.mycocktailproject.models.CocktailDBWrapper;
 import com.mycocktailproject.models.CocktailPreview;
+import org.slf4j.LoggerFactory;
 
 @Component
 public class CocktailDBApiService {
 
 	private final RestTemplate restTemplate = new RestTemplate();
 	private final String BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1";
-
+	private final Logger log = org.slf4j.LoggerFactory.getLogger(CocktailDBApiService.class);
+	
+	
 	public CocktailDBCocktail getCocktailById(long id) {
 		String queryUrl = BASE_URL + "/lookup.php?i={i}";
 		Map<String, String> params = new HashMap<>();
@@ -39,9 +43,9 @@ public class CocktailDBApiService {
 				return result.getDrinks()[0];
 			}
 		} catch (RestClientResponseException ex) {
-			System.out.println(ex.getRawStatusCode() + " : " + ex.getStatusText());
+			log.error("Rest client fetching client by id", ex);
 		} catch (ResourceAccessException ex) {
-			System.out.println(ex.getMessage());
+			System.out.println(ex.getMessage()); //logger 
 		}
 		return null;
 	}
