@@ -8,7 +8,7 @@ export default {
           enter() {
       if (
         confirm( //pops up a message with OK and CANCEL button
-          "Are you sure 21 years of age or older?"
+          "Are you 21 years of age or older?"
         )
       ) { //if OK, delete card
               this.$router.push('/cocktail');
